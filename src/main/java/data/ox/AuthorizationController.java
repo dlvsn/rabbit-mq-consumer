@@ -1,0 +1,16 @@
+package data.ox;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/message")
+public class AuthorizationController {
+    private final AuthorizationService authorizationService;
+
+    @PostMapping
+    public void testReceiver(@RequestParam String sessionId) {
+        authorizationService.ifClientVerified(sessionId);
+    }
+}
